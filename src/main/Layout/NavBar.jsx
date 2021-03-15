@@ -13,8 +13,8 @@ const cities = [
 function NavBar() {
   const [showDropdown, setDropdownVisibility] = useState(false);
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">Weather App</Navbar.Brand>
+    <Navbar bg="primary" expand="sm">
+      <Navbar.Brand href="#home">⛅ Tu Clima </Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown
