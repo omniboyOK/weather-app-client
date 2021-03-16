@@ -4,7 +4,7 @@ import Weather from "../Weather/Weather";
 
 function InnerPage({ city }) {
   return (
-    <Container>
+    <Container style={{ minHeight: "100vh" }}>
       <Row>
         <Col>
           <Weather city={city}></Weather>
