@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "./main/Layout/NavBar";
 import InnerPage from "./main/Layout/InnerPage";
+import Footer from "./main/Layout/Footer";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -32,6 +33,7 @@ function App() {
     <div className="App">
       <NavBar location={location} onSelect={handleLocationChange} />
       <InnerPage city={location} />
+      <Footer></Footer>
     </div>
   );
 }
