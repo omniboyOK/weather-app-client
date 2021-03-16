@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Container } from "react-bootstrap";
-import PropTypes from "prop-types";
 
 function Footer() {
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Spinner } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 function WeatherCard({ main, weather, title, footer, loading }) {
   return (
@@ -41,6 +42,13 @@ WeatherCard.defaultProps = {
   weather: {
     description: "-",
   },
+};
+
+WeatherCard.propType = {
+  main: PropTypes.object,
+  weather: PropTypes.object,
+  title: PropTypes.string,
+  footer: PropTypes.string,
 };
 
 export default WeatherCard;
