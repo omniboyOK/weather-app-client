@@ -23,10 +23,15 @@ function App() {
 
     return null;
   }, []);
+
+  function handleLocationChange(str) {
+    setLocation(str);
+  }
+
   return (
     <div className="App">
-      <NavBar location={location} />
-      <InnerPage />
+      <NavBar location={location} onSelect={handleLocationChange} />
+      <InnerPage city={location} />
     </div>
   );
 }

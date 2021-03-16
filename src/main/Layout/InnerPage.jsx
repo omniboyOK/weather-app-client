@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Weather from "../Weather/Weather";
 
-function InnerPage(props) {
+function InnerPage({ city }) {
   return (
     <Container>
       <Row>
         <Col>
-          <Weather></Weather>
+          <Weather city={city}></Weather>
         </Col>
       </Row>
     </Container>
