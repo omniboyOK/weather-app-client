@@ -1,21 +1,33 @@
-import React, { Component } from "react";
-import { Card } from "react-bootstrap";
+import React from "react";
+import { Card, Spinner } from "react-bootstrap";
 
-function WeatherCard({ main, weather }) {
+function WeatherCard({ main, weather, title, footer, loading }) {
   return (
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
+    <Card className="text-center overflow-hidden m-1">
       <Card.Body>
-        <Card.Title>{main.temp}</Card.Title>
-        <Card.Text>
-          <h4>{main.max_temp}</h4>
-          <h4>{main.min_temp}</h4>
-          <p>{weather.description}</p>
-        </Card.Text>
+        {title && <Card.Title>{title}</Card.Title>}
+
+        {loading ? (
+          <Spinner animation="grow" className="m-2"></Spinner>
+        ) : (
+          <>
+            {weather.icon ? (
+              <img
+                alt={weather.description}
+                src={`/images/${weather.icon}.png`}
+                style={{ maxWidth: "10em" }}
+              />
+            ) : (
+              <></>
+            )}
+            <Card.Title>{main.temp} °C</Card.Title>
+            <Card.Text>Max {main.temp_max} °C</Card.Text>
+            <Card.Text>Min {main.temp_min} °C</Card.Text>
+            <Card.Text>{weather.description}</Card.Text>
+          </>
+        )}
       </Card.Body>
-      <Card.Footer>
-        
-      </Card.Footer>
+      {footer && <Card.Footer>{footer}</Card.Footer>}
     </Card>
   );
 }
@@ -27,7 +39,7 @@ WeatherCard.defaultProps = {
     min_temp: "-",
   },
   weather: {
-    description: "-"
+    description: "-",
   },
 };
 
