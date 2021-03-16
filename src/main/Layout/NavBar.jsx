@@ -17,4 +17,8 @@ NavBar.prototype = {
   location: PropTypes.string,
 };
 
+NavBar.defaultProps = {
+  location: "",
+};
+
 export default NavBar;
