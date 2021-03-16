@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import WeatherCard from "../WeatherCard/WeatherCard";
+import PropTypes from "prop-types";
 
 function Forecast({ forecast, loading }) {
   return (
@@ -26,7 +27,13 @@ function Forecast({ forecast, loading }) {
 }
 
 Forecast.defaultProps = {
-  forcast: [],
+  forecast: [],
+  loading: false,
 };
+
+Forecast.prototype = {
+    forecast: PropTypes.array,
+    loading: PropTypes.bool
+  };
 
 export default Forecast;
