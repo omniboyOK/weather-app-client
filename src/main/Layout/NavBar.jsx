@@ -10,11 +10,11 @@ const cities = [
   { city: "Comodoro Rivadavia", value: "Comodoro Rivadavia, AR" },
 ];
 
-function NavBar() {
+function NavBar({ location }) {
   const [showDropdown, setDropdownVisibility] = useState(false);
   return (
     <Navbar bg="primary" expand="sm">
-      <Navbar.Brand href="#home">⛅ Tu Clima </Navbar.Brand>
+      <Navbar.Brand href="#home">Tu Clima</Navbar.Brand>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown
@@ -31,6 +31,7 @@ function NavBar() {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
+      {location && <Navbar.Text>{location}</Navbar.Text>}
     </Navbar>
   );
 }
