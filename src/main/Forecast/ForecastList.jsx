@@ -32,8 +32,8 @@ Forecast.defaultProps = {
 };
 
 Forecast.prototype = {
-    forecast: PropTypes.array,
-    loading: PropTypes.bool
-  };
+  forecast: PropTypes.array,
+  loading: PropTypes.bool,
+};
 
 export default Forecast;
