@@ -1,25 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Col, Row, NavDropdown, Nav } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Forecast from "../Forecast/ForecastList";
 import WeatherCard from "../WeatherCard/WeatherCard";
+import { useSelector } from "react-redux";
 
-const cities = [
-  { city: "Ubicacion Actual", value: "" },
-  { city: "La Plata", value: "La Plata, AR" },
-  { city: "Rosario", value: "Rosario, AR" },
-  { city: "Bahía Blanca", value: "Bahia Blanca, AR" },
-  { city: "Ushuaia", value: "Ushuaia, AR" },
-  { city: "Comodoro Rivadavia", value: "Comodoro Rivadavia, AR" },
-];
-
-function Weather({ city }) {
+function Weather() {
   const [current, setCurrent] = useState({});
   const [forecast, setForecast] = useState([]);
-  const [showDropdown, setDropdownVisibility] = useState(false);
-  const [location, setLocation] = useState(null);
-  const [selected, setSelection] = useState("Ubicación Actual");
+  const location = useSelector((state) => state.location);
   const [loading, setLoading] = useState(true);
 
   useEffect(
@@ -50,40 +40,15 @@ function Weather({ city }) {
           });
       };
 
-      getWeather(location || city);
-      getForecast(location || city);
+      getWeather(location);
+      getForecast(location);
     },
-    [city, location]
+    [location]
   );
-
-  function handleCitySelection(item) {
-    setSelection(item.city);
-    setLocation(item.value);
-    setDropdownVisibility(false);
-  }
 
   return (
     <Row className="justify-content-md-center">
       <Col fluid="true">
-        <Nav className="mr-auto">
-          <NavDropdown
-            show={showDropdown}
-            onClick={() => setDropdownVisibility(!showDropdown)}
-            title={selected}
-            id="basic-nav-dropdown"
-          >
-            {cities.map((item) => (
-              <NavDropdown.Item
-                value={item.value}
-                name={item.city}
-                onClick={() => handleCitySelection(item)}
-                key={item.value}
-              >
-                {item.city}
-              </NavDropdown.Item>
-            ))}
-          </NavDropdown>
-        </Nav>
         <WeatherCard
           title={location}
           main={current.main}
@@ -95,13 +60,5 @@ function Weather({ city }) {
     </Row>
   );
 }
-
-Weather.propType = {
-  city: PropTypes.string,
-};
-
-Weather.defaultProps = {
-  city: "",
-};
 
 export default Weather;

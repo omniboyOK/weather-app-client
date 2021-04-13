@@ -5,15 +5,18 @@ import { useEffect, useState } from "react";
 import NavBar from "./main/Layout/NavBar";
 import InnerPage from "./main/Layout/InnerPage";
 import Footer from "./main/Layout/Footer";
+import { useDispatch } from "react-redux";
 
 function App() {
-  const [location, setLocation] = useState("");
+  const dispatch = useDispatch();
+
   useEffect(function () {
     const getData = () => {
       axios
         .get("/v1/location")
         .then((response) => {
-          setLocation(response.data);
+          dispatch({ type: "CHANGE_LOCATION", location: response.data });
+          dispatch({ type: "CHANGE_CITY", city: response.data });
         })
         .catch((error) => {
           console.log(error);
@@ -25,14 +28,10 @@ function App() {
     return null;
   }, []);
 
-  function handleLocationChange(str) {
-    setLocation(str);
-  }
-
   return (
     <div className="App">
-      <NavBar location={location} onSelect={handleLocationChange} />
-      <InnerPage city={location} />
+      <NavBar />
+      <InnerPage />
       <Footer></Footer>
     </div>
   );

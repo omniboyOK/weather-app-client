@@ -1,13 +1,21 @@
 import { createStore } from "redux";
 
-const defaultWeather = {
+const initialState = {
   location: "Buenos Aires",
+  city: "Ubicación Actual",
 };
 
-const weatherReducer = (state = defaultWeather, { type, location = "Unkown"}) => {
-  if (type === "CHANGE_LOCATION") {
+const weatherReducer = (state = initialState, action) => {
+  if (action.type === "CHANGE_LOCATION") {
     return {
-      location: location,
+      ...state,
+      location: action.location,
+    };
+  }
+  if (action.type === "CHANGE_CITY") {
+    return {
+      ...state,
+      city: action.city,
     };
   }
   return state;

@@ -1,13 +1,19 @@
 import React from "react";
 import { Navbar, Container } from "react-bootstrap";
+import CityDropdown from "./CityDropdown";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-function NavBar({ location }) {
+function NavBar() {
+  const location = useSelector((state) => state.location);
+  const city = useSelector((state) => state.city);
+
   return (
     <Navbar bg="primary" expand="sm">
       <Container>
         <Navbar.Brand href="#home">Tu Clima</Navbar.Brand>
-        {location && <Navbar.Text>{location}</Navbar.Text>}
+        <CityDropdown></CityDropdown>
+        <Navbar.Text>{city || "Ubicación actual"}</Navbar.Text>
       </Container>
     </Navbar>
   );

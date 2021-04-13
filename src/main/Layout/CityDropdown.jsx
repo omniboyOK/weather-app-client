@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavDropdown } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const cities = [
   { city: "Ubicacion Actual", value: "" },
@@ -14,10 +14,10 @@ const cities = [
 function CityDropdown() {
   const dispatch = useDispatch();
   const [showDropdown, setDropdownVisibility] = useState(false);
-  const [selected, setSelection] = useState("Ubicación Actual");
+  const city = useSelector((state) => state.city);
 
   function handleCitySelection(item) {
-    setSelection(item.city);
+    dispatch({ type: "CHANGE_CITY", city: item.city });
     dispatch({ type: "CHANGE_LOCATION", location: item.value });
     setDropdownVisibility(false);
   }
@@ -26,7 +26,7 @@ function CityDropdown() {
     <NavDropdown
       show={showDropdown}
       onClick={() => setDropdownVisibility(!showDropdown)}
-      title={selected}
+      title={city}
       id="basic-nav-dropdown"
     >
       {cities.map((item) => (
