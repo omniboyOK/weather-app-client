@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { Col, Row } from "react-bootstrap";
 import Forecast from "../Forecast/ForecastList";
 import WeatherCard from "../WeatherCard/WeatherCard";

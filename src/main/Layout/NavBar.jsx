@@ -1,11 +1,9 @@
 import React from "react";
 import { Navbar, Container } from "react-bootstrap";
 import CityDropdown from "./CityDropdown";
-import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
 function NavBar() {
-  const location = useSelector((state) => state.location);
   const city = useSelector((state) => state.city);
 
   return (
@@ -18,13 +16,5 @@ function NavBar() {
     </Navbar>
   );
 }
-
-NavBar.prototype = {
-  location: PropTypes.string,
-};
-
-NavBar.defaultProps = {
-  location: "",
-};
 
 export default NavBar;

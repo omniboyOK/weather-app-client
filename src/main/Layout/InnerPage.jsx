@@ -16,11 +16,11 @@ function InnerPage() {
 }
 
 InnerPage.defaultProps = {
-  city: ""
+  city: "",
 };
 
 InnerPage.prototype = {
-  city: PropTypes.string
+  city: PropTypes.string,
 };
 
 export default InnerPage;
