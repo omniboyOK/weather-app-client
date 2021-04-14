@@ -9,9 +9,13 @@ function NavBar() {
   return (
     <Navbar bg="primary" expand="sm">
       <Container>
-        <Navbar.Brand href="#home">Tu Clima</Navbar.Brand>
-        <CityDropdown></CityDropdown>
-        <Navbar.Text>{city || "Ubicación actual"}</Navbar.Text>
+        <Navbar.Brand href="#home" style={{ color: "white" }}>
+          Tu Clima
+        </Navbar.Brand>
+        <CityDropdown />
+        <Navbar.Text style={{ color: "white" }}>
+          {city || "Ubicación actual"}
+        </Navbar.Text>
       </Container>
     </Navbar>
   );

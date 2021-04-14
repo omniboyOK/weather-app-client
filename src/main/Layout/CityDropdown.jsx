@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavDropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 const cities = [
@@ -13,33 +13,29 @@ const cities = [
 
 function CityDropdown() {
   const dispatch = useDispatch();
-  const [showDropdown, setDropdownVisibility] = useState(false);
   const city = useSelector((state) => state.city);
 
   function handleCitySelection(item) {
     dispatch({ type: "CHANGE_CITY", city: item.city });
     dispatch({ type: "CHANGE_LOCATION", location: item.value });
-    setDropdownVisibility(false);
   }
 
   return (
-    <NavDropdown
-      show={showDropdown}
-      onClick={() => setDropdownVisibility(!showDropdown)}
-      title={city}
-      id="basic-nav-dropdown"
-    >
-      {cities.map((item) => (
-        <NavDropdown.Item
-          value={item.value}
-          name={item.city}
-          onClick={() => handleCitySelection(item)}
-          key={item.value}
-        >
-          {item.city}
-        </NavDropdown.Item>
-      ))}
-    </NavDropdown>
+    <Dropdown>
+      <Dropdown.Toggle>{city}</Dropdown.Toggle>
+      <Dropdown.Menu>
+        {cities.map((item) => (
+          <Dropdown.Item
+            value={item.value}
+            name={item.city}
+            onClick={() => handleCitySelection(item)}
+            key={item.value}
+          >
+            {item.city}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
   );
 }
 
