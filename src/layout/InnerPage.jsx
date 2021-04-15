@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import Weather from "../Weather/Weather";
+import Weather from "../main/Weather/Weather";
 import PropTypes from "prop-types";
 
 function InnerPage() {

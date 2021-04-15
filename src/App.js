@@ -2,9 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import axios from "axios";
 import { useEffect } from "react";
-import NavBar from "./main/Layout/NavBar";
-import InnerPage from "./main/Layout/InnerPage";
-import Footer from "./main/Layout/Footer";
+import NavBar from "./layout/NavBar";
+import InnerPage from "./layout/InnerPage";
+import Footer from "./layout/Footer";
 import { useDispatch } from "react-redux";
 
 function App() {
